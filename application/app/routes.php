@@ -15,6 +15,7 @@ Route::get('/', 'UserController@getLogin');
 
 Route::controller('users', 'UserController');
 Route::controller('app', 'AppController');
+Route::controller('admin', 'AdminController');
 
 Route::group(array('prefix' => 'api'), function()
 {

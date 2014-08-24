@@ -6,6 +6,7 @@
 		<title>Pick 'Em</title>
 		{{ HTML::style('//maxcdn.bootstrapcdn.com/bootswatch/3.2.0/flatly/bootstrap.min.css') }}
 		{{ HTML::style('//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css') }}
+		{{ HTML::style('css/main.css') }}
 	</head>
 
 	<body>

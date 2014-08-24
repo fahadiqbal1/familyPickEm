@@ -3,10 +3,12 @@
 		Select a week to make picks for:
 		<div class="btn-group">
 			@foreach ($menu as $weekNumber => $week)
-				@if ($week)
-					{{ HTML::linkAction('AppController@getMakePick', $weekNumber, array($weekNumber), array('class'=>'btn btn-success btn-sm')) }}
+				@if ($week == 'Y')
+					{{ HTML::linkAction('AppController@getViewPick', $weekNumber, array($weekNumber), array('class'=>'btn btn-success btn-sm', 'title'=>'View picks already made')) }}
+				@elseif ($week == 'N')
+					{{ HTML::linkAction('AppController@getMakePick', $weekNumber, array($weekNumber), array('class'=>'btn btn-primary btn-sm', 'title'=>'Make picks')) }}
 				@else
-					{{ HTML::linkAction('AppController@getMakePick', $weekNumber, array($weekNumber), array('class'=>'btn btn-primary btn-sm')) }}
+					{{ HTML::linkAction('AppController@getViewPick', $weekNumber, array($weekNumber), array('class'=>'btn btn-danger btn-sm', 'title'=>'Week has already passed')) }}
 				@endif
 			@endforeach
 		</div>
@@ -14,16 +16,5 @@
 </div>
 <br>
 <div class="row">
-	<div class="col-md-4">
-		<div class="panel panel-default">
-			<div class="panel-heading">Leaderboard</div>
-			<table class="table">
-				<tr><th>#</th><th>Name</th><th>Points</th></tr>
-			</table>
-		</div>
-	</div>
+	@include('layouts.panels')
 </div>
-
-
-{{ Form::select('company_id', Teams::lists('name', 'abbr')) }}
-{{ Form::select('company_idd', Matches::where('weekNumber','=',1)->lists('awayTeam', 'id')) }}

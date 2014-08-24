@@ -20,7 +20,7 @@ class CreateMatches extends Migration {
 			$table->string('awayTeam');
 			$table->date('gameDate');
 			$table->time('gameTime');
-			$table->integer('winner')->nullable();
+			$table->string('winner')->nullable();
 			$table->timestamps();
 		});
 	}

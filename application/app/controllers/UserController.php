@@ -23,7 +23,7 @@ class UserController extends \BaseController {
 
 	public function getLogout() {
 		Auth::logout();
-		return Redirect::to('/users/login')->with('message', 'Your are now logged out!')->with('msg_lvl', 'success');
+		return Redirect::action('UserController@getLogin')->with('message', 'Your are now logged out!')->with('msg_lvl', 'success');
 	}
 
 	public function getRegister() {
@@ -36,14 +36,15 @@ class UserController extends \BaseController {
 		$validator = Validator::make(Input::all(), User::$rules);
 		if ($validator->passes()) {
 			$user = new User;
-				$user->firstName = Input::get('firstname');
-				$user->lastName = Input::get('lastname');
+				$user->firstName = Input::get('firstName');
+				$user->lastName = Input::get('lastName');
 				$user->email = Input::get('email');
+				$user->teamname = Input::get('teamname');
 				$user->password = Hash::make(Input::get('password'));
 			$user->save();
-			return Redirect::to('/users/login')->with('message', 'Thanks for registering!')->with('msg_lvl', 'success');
+			return Redirect::action('UserController@getLogin')->with('message', 'Thanks for registering!')->with('msg_lvl', 'success');
 		} else {
-			return Redirect::to('/users/register')
+			return Redirect::action('UserController@getRegister')
 				->with('message', 'The following errors occurred')
 				->with('msg_lvl', 'danger')
 				->withErrors($validator)->withInput();
@@ -51,10 +52,11 @@ class UserController extends \BaseController {
 	}
 
 	public function postSignin() {
-		if (Auth::attempt(array('email'=>Input::get('email'), 'password'=>Input::get('password')))) {
-			return Redirect::to('/app/welcome')->with('message', 'You are now logged in!')->with('msg_lvl', 'success');
+		$remember = (Input::has('remember_me')) ? true : false;
+		if (Auth::attempt(array('email'=>Input::get('email'), 'password'=>Input::get('password')), $remember)) {
+			return Redirect::action('AppController@getWelcome')->with('message', 'You are now logged in!')->with('msg_lvl', 'success');
 		} else {
-			return Redirect::to('/users/login')
+			return Redirect::action('UserController@getLogin')
 				->with('message', 'Your username/password combination was incorrect')
 				->with('msg_lvl', 'danger')
 				->withInput();

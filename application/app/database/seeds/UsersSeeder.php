@@ -7,11 +7,12 @@ class UsersSeeder extends Seeder {
 		DB::table('users')->delete();
 
 		User::create(array( 
-			'firstname' => 'John',
-			'lastname' => 'Doe',
+			'firstname' => 'Administrator',
+			'lastname' => 'User',
 			'email' => 'admin', 
+			'teamname' => 'Team Admin',
 			'password' => Hash::make('admin'),
-			'remember_token' => null));
+			'admin' => 1));
 	}
  
 }
