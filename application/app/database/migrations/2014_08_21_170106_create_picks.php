@@ -16,7 +16,7 @@ class CreatePicks extends Migration {
 		{
 			$table->increments('id');
 			$table->integer('user_id')->unsigned();
-			$table->integer('weekNumber')->unsigned();
+			$table->integer('match_id')->unsigned();
 			$table->string('pick');
 			$table->timestamps();
 		});

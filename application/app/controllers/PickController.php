@@ -36,11 +36,16 @@ class PickController extends \BaseController {
 	 */
 	public function store()
 	{
-		$gamePicks = array();
 		foreach (Request::all() as $key => $value) {
-			$gamePicks[$key] = $value;
+			if (is_int($key)) {
+				$pick = new Picks;
+				$pick->user_id = Auth::user()->id;
+				$pick->match_id = $key;
+				$pick->pick = $value;
+				$pick->save();
+			}
 		}
-		return $gamePicks;
+		return Redirect::to('/app/welcome')->with('message', 'Picks saved! Good Luck :)')->with('msg_lvl', 'success');
 	}
 
 

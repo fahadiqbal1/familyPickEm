@@ -9,9 +9,10 @@
 				<span class="icon-bar"></span>
 			</button>
 			@if(!Auth::check())
-				<a class="navbar-brand" href="/">Pick 'Em</a>
+				{{ HTML::linkAction('UserController@getLogin', 'Pick \'Em', null, array('class'=>'navbar-brand')) }}
 			@else
-				<a class="navbar-brand" href="/app/welcome">Pick 'Em</a>
+				<!-- <a class="navbar-brand" href="/app/welcome">Pick 'Em</a> -->
+				{{ HTML::linkAction('AppController@getWelcome', 'Pick \'Em', null, array('class'=>'navbar-brand')) }}
 			@endif
 		</div>
 

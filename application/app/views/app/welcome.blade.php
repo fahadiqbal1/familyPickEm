@@ -2,9 +2,13 @@
 	<div class="col-md-12">
 		Select a week to make picks for:
 		<div class="btn-group">
-			@for ($i=1; $i < 17; $i++)
-				{{ HTML::linkAction('AppController@getMakePick', $i, array($i), array('class'=>'btn btn-primary btn-sm')) }}
-			@endfor
+			@foreach ($menu as $weekNumber => $week)
+				@if ($week)
+					{{ HTML::linkAction('AppController@getMakePick', $weekNumber, array($weekNumber), array('class'=>'btn btn-success btn-sm')) }}
+				@else
+					{{ HTML::linkAction('AppController@getMakePick', $weekNumber, array($weekNumber), array('class'=>'btn btn-primary btn-sm')) }}
+				@endif
+			@endforeach
 		</div>
 	</div>
 </div>

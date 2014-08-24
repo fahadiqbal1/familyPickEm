@@ -1,5 +1,5 @@
 Pick Games for Week {{ $week }}
-{{ Form::open( array('route' => array('api.picks.store', $user->email) ) ) }}
+{{ Form::open( array('route' => array('api.picks.store', null) ) ) }}
 <table class="table table-bordered table-condensed table-striped table-hover table-responsive">
 	<tr>
 		<th>Away</th>
@@ -19,7 +19,6 @@ Pick Games for Week {{ $week }}
 	@endforeach
 	
 </table>
-{{ $games->links() }}
 {{ Form::submit('Submit Picks', array('class'=>'btn btn-default'))}}
 {{ Form::reset('Reset Picks', array('class'=>'btn btn-default'))}}
 {{ Form::close() }}
