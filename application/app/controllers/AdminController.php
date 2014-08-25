@@ -4,6 +4,12 @@ class AdminController extends \BaseController {
 
 	protected $layout = "layouts.main";
 
+	public function __construct()
+	{
+		$this->beforeFilter('csrf', array('on'=>'post'));
+		$this->beforeFilter('auth');
+	}
+
 	public function getIndex($userId)
 	{
 		$user = User::find($userId);

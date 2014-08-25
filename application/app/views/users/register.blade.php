@@ -1,5 +1,5 @@
-{{ Form::open(array('url'=>'/users/create', 'class'=>'form-signup')) }}
-	<h2 class="form-signup-heading">Register to Play :)</h2>
+{{ Form::open(array('action' => array('UserController@postCreate'), 'class'=>'form-signup')) }}
+	<h2 class="form-signup-heading">Register to Play</h2>
  
 	<ul>
 		@foreach($errors->all() as $error)

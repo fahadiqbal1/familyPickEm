@@ -1,6 +1,6 @@
 {{ Form::model($user, array('action' => array('AppController@postUpdateProfile', $user->id))) }}
-	<h2 class="form-signup-heading">Edit your profile! :)</h2>
- 
+	<h2 class="form-signup-heading">Edit your profile, {{$user->firstName}}!</h2>
+	<br>
 	<ul>
 		@foreach($errors->all() as $error)
 			<li>{{ $error }}</li>

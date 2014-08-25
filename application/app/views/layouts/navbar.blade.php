@@ -21,15 +21,15 @@
 			<ul class="nav navbar-nav navbar-right">
 		<li><a href="#">About</a></li>
 		@if(!Auth::check())
-		  <li>{{ HTML::link('users/register', 'Register') }}</li>   
-		  <li>{{ HTML::link('users/login', 'Login') }}</li>
+		  <li>{{ HTML::linkAction('UserController@getRegister', 'Register') }}</li>   
+		  <li>{{ HTML::linkAction('UserController@getLogin', 'Login') }}</li>
 		@else
 		  <li class="dropdown">
 			<a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ $user->firstName. ' ' . $user->lastName }}<span class="caret"></span></a>
 			<ul class="dropdown-menu" role="menu">
-			  <li>{{ HTML::linkAction('AppController@getProfile', 'Profile', array($user->id)) }}</li>
+			  <li>{{ HTML::linkAction('AppController@getProfile', 'Profile', array($user->id), array('id'=>'profile')) }}</li>
 			  <li class="divider"></li>
-			  <li>{{ HTML::link('/users/logout', 'Logout') }}</li>
+			  <li>{{ HTML::linkAction('UserController@getLogout', 'Logout', null, array('id'=>'logout')) }}</li>
 			</ul>
 		  </li>
 		@endif

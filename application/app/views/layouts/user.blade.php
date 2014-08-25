@@ -6,6 +6,7 @@
 		<title>Pick 'Em</title>
 		{{ HTML::style('//maxcdn.bootstrapcdn.com/bootswatch/3.2.0/flatly/bootstrap.min.css') }}
 		{{ HTML::style('//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css') }}
+		{{ HTML::style('css/main.css') }}
 	</head>
 
 	<body>
@@ -18,14 +19,16 @@
 				</p>
 			@endif
 			<div class="row">
-				<div class="col-md-8">
-					
-				</div>
-				<div class="col-md-4">
+				<div class="col-md-4 col-md-push-8">
 					{{ $content }}
 				</div>
+				<div class="col-md-8 col-md-pull-4">
+					@include('layouts.welcome')
+				</div>
 			</div>
-			
+		</div>
+		<div class="footer">
+			@include('layouts.footer')
 		</div>
 		{{ HTML::script('//code.jquery.com/jquery-2.1.0.min.js') }}
 		{{ HTML::script('//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js') }}

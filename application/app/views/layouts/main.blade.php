@@ -23,7 +23,9 @@
 					{{ $content }}
 				</div>
 			</div>
-			
+		</div>
+		<div class="footer">
+			@include('layouts.footer')
 		</div>
 		{{ HTML::script('//code.jquery.com/jquery-2.1.0.min.js') }}
 		{{ HTML::script('//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js') }}
