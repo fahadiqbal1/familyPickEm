@@ -52,7 +52,7 @@
 					<ul>
 						<li>Pick 5 randomly selected games for each week</li>
 						<li>Winning a game is 3 points</li>
-						<li>A ties is 1 poiny</li>
+						<li>A tie is 1 point</li>
 						<li>And a loss is 0 points</li>
 					</ul>
 				</div>

@@ -7,20 +7,26 @@
 				<tr>
 					<th>Game</th>
 					<th>Your Pick</th>
+					<th>Winner</th>
 					<th>Game Date</th>
 					<th>Game Time (EST)</th>
-					<th>Winner</th>
 				</tr>
 			</thead>
 			<tbody>
 				@foreach ($games as $game)
-					<tr>
-						<td data-title="Game">{{ $game->AwayTeam }} vs. {{ $game->HomeTeam }}</td>
-						<td data-title="Your Pick">{{ $game->Pick }}</td>
-						<td data-title="Game Date">{{ date('l, j M-Y',strtotime($game->gameDate)) }}</td>
-						<td data-title="Game Time">{{ $game->gameTime }}</td>
-						<td data-title="Winner">{{ $game->winner or 'Game not played yet' }}</td>
-					</tr>
+					@if ($game->winner == null)
+						<tr>
+					@elseif ($game->winner === $game->pick)
+						<tr class="success">
+					@else
+						<tr class="danger">
+					@endif
+							<td data-title="Game">{{ $game->AwayTeam }} vs. {{ $game->HomeTeam }}</td>
+							<td data-title="Your Pick">{{ $game->Pick }}</td>
+							<td data-title="Winner">{{ $game->Winner or 'Game not played yet' }}</td>
+							<td data-title="Game Date">{{ date('l, j M-Y',strtotime($game->gameDate)) }}</td>
+							<td data-title="Game Time">{{ $game->gameTime }}</td>
+						</tr>
 				@endforeach
 			</tbody>
 		</table>

@@ -105,7 +105,8 @@ class AppController extends \BaseController {
 		$games = Picks::select(DB::raw('*
 									, (SELECT CONCAT(name, " ", nickname) FROM `pickem_teams` as T WHERE T.abbr = `homeTeam` ) AS HomeTeam
 									, (SELECT CONCAT(name, " ", nickname) FROM `pickem_teams` as T WHERE T.abbr = `awayTeam` ) AS AwayTeam
-									, (SELECT CONCAT(name, " ", nickname) FROM `pickem_teams` as T WHERE T.abbr = `pick` ) AS Pick'))
+									, (SELECT CONCAT(name, " ", nickname) FROM `pickem_teams` as T WHERE T.abbr = `pick` ) AS Pick
+									, (SELECT CONCAT(name, " ", nickname) FROM `pickem_teams` as T WHERE T.abbr = `winner` ) AS Winner'))
 					->join('matches', 'picks.match_id', '=', 'matches.id')
 					->where('weekNumber','=',$week)
 					->where('user_id','=',$id)
