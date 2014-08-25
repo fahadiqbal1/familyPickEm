@@ -29,7 +29,8 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		'teamname'=>'required|min:2|unique:users',
 		'email'=>'required|email|unique:users',
 		'password'=>'required|alpha_num|between:6,12|confirmed',
-		'password_confirmation'=>'required|alpha_num|between:6,12'
+		'password_confirmation'=>'required|alpha_num|between:6,12',
+		'recaptcha_response_field' => 'required|recaptcha',
 		);
 	public static $profile_rules = array(
 		'teamname'=>'required|min:2|unique:users',

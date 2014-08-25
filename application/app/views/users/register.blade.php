@@ -12,6 +12,7 @@
 	    <div class="form-group">{{ Form::text('teamname', null, array('class'=>'form-control', 'placeholder'=>'Team Name')) }}</div>
 	    <div class="form-group">{{ Form::password('password', array('class'=>'form-control', 'placeholder'=>'Password')) }}</div>
 	    <div class="form-group">{{ Form::password('password_confirmation', array('class'=>'form-control', 'placeholder'=>'Confirm Password')) }}</div>
+	    <div class="form-group">{{ Form::captcha() }}</div>
  
 	{{ Form::submit('Register', array('class'=>'btn btn-large btn-primary btn-block'))}}
 {{ Form::close() }}
