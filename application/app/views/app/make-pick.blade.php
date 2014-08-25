@@ -22,6 +22,6 @@
 			</tbody>
 		</table>
 	</div>
-	{{ Form::submit('Submit Picks', array('class'=>'btn btn-default'))}}
+	{{ Form::submit('Submit Picks', array('class'=>'btn btn-primary'))}}
 	{{ Form::reset('Reset Picks', array('class'=>'btn btn-default'))}}
 {{ Form::close() }}

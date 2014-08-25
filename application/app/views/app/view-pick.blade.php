@@ -34,3 +34,5 @@
 @else
 	<h4>Sorry no picks were made for this week :(</h4>
 @endif
+
+{{ HTML::linkAction('AppController@getWelcome', '<< Back', null, array('class'=>'btn btn-success btn-sm', 'title'=>'View picks already made')) }}
